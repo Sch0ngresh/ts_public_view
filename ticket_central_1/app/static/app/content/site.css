@@ -1,0 +1,97 @@
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-image: url("https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=600&q=60");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: black;
+    background-color: black;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/* styles for validation helpers */
+.field-validation-error {
+    color: #b94a48;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+input.input-validation-error {
+    border: 1px solid #b94a48;
+}
+
+input[type="checkbox"].input-validation-error {
+    border: 0 none;
+}
+
+.validation-summary-errors {
+    color: #b94a48;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+.jumbotron{
+    margin-top: 20px;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.drk_back{
+    color: whitesmoke;
+}
+.panel {
+    min-height: 110px;
+    box-shadow: 1px 2.5px #95a5a6;
+    
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 2.5rem;
+}
+.body-content {
+    position: relative;
+    min-height: 80vh;
+}
+
+.content-wrap {
+    padding-bottom: 2.5rem;
+}
+.panel-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:7px;
+}
+#change_password{
+    margin: 0 auto;
+    margin-top: 10%;
+}
+.form_contain {
+    display: inline-block;
+    min-width: 375px;
+    text-align:left;
+    margin-top:20px;
+}
+.panel-heading{
+    font-size:1.25em;
+}

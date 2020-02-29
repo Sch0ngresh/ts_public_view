@@ -1,0 +1,47 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+
+<div class="well">
+    <h1>Work Tickets:</h1> 
+    <h4>Currently <span class="label label-info">{{ tick_cnt }}</span> new tickets</h4>  
+
+    
+<table class="table table-striped">
+    <tr>
+        <th>Date:</th>
+        <th>Location:</th>
+        <th>Type:</th>
+        <th>Issue:</th>
+        <th>Status:</th>
+        <th>Action:</th>
+        
+
+    </tr>
+{% for ticket in my_tickets %}
+    <tr>
+        <td>{{ ticket.ticket_created }}</td>
+        <td>{{ ticket.custID.cust_name }}</td>
+        <td>{{ ticket.ticketID.t_type.type }}</td>
+        <td>{{ ticket.ticketID.description }}</td>
+
+        {% if ticket.status == "Done" %}
+            <td>{{ ticket.status }}/{{ ticket.ticket_completed}}</td>
+            <td><a href="/work_detail/{{ ticket.id }}" class="btn btn-success btn-sm">View</a></td>
+        {% elif ticket.status == "In-progress" %}
+            <td>{{ ticket.status }}</td>
+            <td><a href="/work_detail/{{ ticket.id }}" class="btn btn-primary btn-sm">Cont.</a></td>
+        {% elif ticket.status == "Not begun" %}
+            <td>{{ ticket.status }}</td>
+            <td><a href="/work_detail/{{ ticket.id }}" class="btn btn-warning btn-sm">Begin</a></td>
+        
+        {% endif %}
+        
+        
+        
+    </tr>
+{% endfor %}
+</table>
+    </div>
+{% endblock %}

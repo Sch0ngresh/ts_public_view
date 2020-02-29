@@ -1,0 +1,39 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+
+<div class="well">
+    <h1>My Tickets</h1>
+    <hr />
+    
+<table class="table table-striped">
+    <tr>
+        <th>Date:</th>
+        <th>Location:</th>
+        <th>Type:</th>
+        <th>Issue:</th>
+        <th>Status:</th>
+        <th>Action:</th>
+    </tr>
+{% for ticket in my_tickets %}
+    <tr>
+        <td>{{ ticket.ticket_created }}</td>
+        <td>{{ ticket.custID.cust_name }}</td>
+        <td>{{ ticket.ticketID.t_type.type }}</td>
+        <td>{{ ticket.ticketID.description }}</td>
+        {% if ticket.status == "Done" %}
+            <td>{{ ticket.status }}/{{ ticket.ticket_completed}}</td>
+            <td><a href="#" class="btn btn-success btn-sm">View</a></td>
+        {% else %}
+            <td>{{ ticket.status }}</td>
+            <td><a href="#" class="btn btn-default btn-sm">Follow</a></td>
+        {% endif %}
+        
+        
+        
+    </tr>
+{% endfor %}
+</table>
+    </div>
+{% endblock %}

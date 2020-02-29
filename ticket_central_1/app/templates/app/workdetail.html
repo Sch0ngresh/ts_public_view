@@ -1,0 +1,101 @@
+﻿{% extends "app/layout.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="panel panel-default" style="padding: 20px;">
+    <div class="row">
+    <div class="col-md-6">
+        <h3><strong>Service Details:</strong></h3>
+            <hr />
+        <div class="panel panel-default" style="padding:10px;background-color: #dfe6e9;">
+    <h4><strong>Location:</strong></h4>
+        <hr />
+    
+    <h5><strong>{{ detail.custID.cust_name }}</strong></h5>
+    <h5>Room: {{ detail.room_num }}</h5>
+    <h5>{{ detail.custID.cust_address }}</h5>
+    <h5>{{ detail.custID.cust_city }}, {{ detail.custID.cust_state }} {{ detail.custID.cust_zip }}</h5>
+            </div>
+        <hr />
+    <h4><strong>Issues: </strong><small>Ticket # {{ detail.id }}/ {{ detail.ticket_created }}</small></h4>
+       <hr />
+        <div class="panel panel-default" style="padding:10px;background-color: #dfe6e9;">
+        <h5>Type:{{detail.ticketID.t_type }}</h5>
+            <hr />
+        <ul>
+    <li>{{ detail.ticketID.description }}</li>
+        </ul>
+        </div>
+        <div class="panel panel-default" style="padding:10px;background-color: #dfe6e9;">
+        <h5>Level:</h5>
+            <hr />
+        <ul>
+    <li>{{ detail.severity }}</li>
+        </ul>
+</div>
+            <div class="panel panel-default" style="padding:10px;background-color: #dfe6e9;">
+         <h5>Contact Method:</h5>
+                <hr />
+        <ul>
+    <li>{{ detail.contact_method }}</li>
+    <li>{{ detail.contact }}</li>
+        </ul>
+</div>
+        <div class="panel panel-default" style="padding:10px;background-color: #dfe6e9;">
+            
+        <h5>Work Affect:</h5>
+            <hr />
+        <ul>
+    <li>{{ detail.aff_work }}</li>
+        </ul>
+</div>
+            <div class="panel panel-default" style="padding:10px;background-color: #dfe6e9;">
+     <h5>Notes:</h5> 
+                <hr />
+                <ul>
+    <li>{{ detail.description }}</li>
+        </ul>
+</div>
+     <div class="panel panel-default" style="padding:10px;background-color: #dfe6e9;">
+    <h5>Screen Shots:</h5> 
+         <hr />
+    <ul>
+        {% if detail.document %}
+        
+        <li><a href="{{ detail.document.url }}">Link</a></li>
+        {% endif %}
+    </ul>
+ </div>
+         <div class="panel panel-default" style="padding:10px;background-color: #dfe6e9;">
+     <h5>Affected:</h5> 
+             <hr />
+                <ul>
+    <li>{{ detail.aff_num }}</li>
+        </ul>
+</div>
+       </div>
+    <div class="col-md-6">
+       <h3><strong>Documentation:</strong></h3>
+            <hr />
+    <div class="panel panel-default" style="padding:10px;background-color: #87D37C;" >
+    
+    <div class="panel-body">
+        <form method="post" >
+            {% csrf_token %}
+                {{ form|crispy }}
+ 
+            <button type="submit" class="btn btn-default"&gt;Submit>Enter</button>
+        </form>
+    </div>
+</div>
+        {% if detail.document %}
+        <div class="panel panel-default">
+        <iframe src="{{ detail.document.url }}" style="width: 100%;height: 100%;border: none;"></iframe>
+        
+            </div>
+        {% endif %}
+    </div>
+        </div>
+ </div>
+
+
+{% endblock %}

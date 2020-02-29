@@ -1,0 +1,54 @@
+{% extends "app/layout.html" %}
+
+{% block content %}
+
+<div class="container" style="margin-top:30px;">
+<div class="row" style="margin-left:25%;">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>{{ title }}</h2></div>
+            <div class="panel-body">
+        <section id="loginForm">
+            <form action="." method="post" class="form-horizontal">
+                {% csrf_token %}
+ 
+                <div class="form-group">
+                    <label for="id_username">User name:</label><br />
+                    
+                        {{ form.username }}
+                    
+                </div>
+                <div class="form-group">
+                    <label for="id_password">Password:</label><br />
+                   
+                        {{ form.password }}
+                    
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="hidden" name="next" value="{% url 'dashboard' %}" />
+                        <input type="submit" value="Log in" class="btn btn-default" />
+                    </div>
+                </div>
+                {% if form.errors %}
+                <p class="validation-summary-errors">Please enter a correct user name and password.</p>
+                {% endif %}
+            </form>
+        </section>
+                </div>
+    </div>
+    <div class="col-md-4">
+        <section id="socialLoginForm"></section>
+    </div>
+        </div>
+</div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+
+    {% load staticfiles %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}
